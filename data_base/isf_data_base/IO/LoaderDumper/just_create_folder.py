@@ -159,7 +159,7 @@ class ManagedFolder(str):
         else:
             str_.append(self)
         lines = calc_recursive_filetree(
-            self, Path(self), 
+            self, Path(str(self)),  # plain str: Python 3.12 pathlib slices its input, which ManagedFolder.__getitem__ rejects
             depth=depth, max_depth=max_depth, 
             max_lines_per_key=max_lines_per_key, 
             all_files=all_files, 
